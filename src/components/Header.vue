@@ -1,5 +1,8 @@
 <template>
-	<header></header>
+	<header>
+		<input type="text" />
+		<button>Cerca</button>
+	</header>
 </template>
 
 <script>
