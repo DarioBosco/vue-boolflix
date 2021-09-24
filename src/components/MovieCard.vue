@@ -5,7 +5,7 @@
 				<li v-for="(movie, index) in movies" :key="index">
 					<div>Titolo: {{ movie.title }}</div>
 					<div>Titolo Originale: {{ movie.original_title }}</div>
-					<div>Lingua: {{ movie.original_language }}</div>
+					<div>Lingua: <img :src="'https://www.countryflags.io/' + getIcon(movie.original_language) + '/shiny/32.png'" /></div>
 					<div>Voto: {{ movie.vote_count }}</div>
 					<hr />
 				</li>
@@ -20,6 +20,18 @@ export default {
 	props: {
 		movies: Array,
 		APIQuery: String,
+	},
+	methods: {
+		getIcon(country) {
+			if (country === 'en') {
+				return 'GB';
+			} else if (country === 'ja') {
+				return 'JP';
+			} else if (country === 'el') {
+				return 'GR';
+			}
+			return country.toUpperCase();
+		},
 	},
 };
 </script>
