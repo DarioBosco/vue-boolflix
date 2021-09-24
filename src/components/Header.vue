@@ -1,12 +1,18 @@
 <template>
 	<header>
-		<input type="text" />
-		<button>Cerca</button>
+		<input v-model="inputText" type="text" />
+		<button @click="$emit('searchHasChanged', inputText)" >Cerca</button>
 	</header>
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			inputText: '',
+		};
+	},
+};
 </script>
 
 <style></style>
