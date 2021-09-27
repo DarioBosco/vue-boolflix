@@ -6,7 +6,7 @@
 					<div>Titolo: {{ movie.title }}</div>
 					<div>Titolo Originale: {{ movie.original_title }}</div>
 					<div>Lingua: <img :src="'https://www.countryflags.io/' + getFlag(movie.original_language) + '/shiny/32.png'" /></div>
-					<div>Voto: {{ Math.floor(movie.vote_average / 2) }}</div>
+					<div>Voto: <i v-for="(n, index) in 5" :key="index" class="far fa-star"></i></div>
 					<div>
 						<img v-if="movie.poster_path != null" class="poster" :src="'https://image.tmdb.org/t/p/w92' + movie.poster_path" alt="" />
 						<img v-else class="poster" src="../assets/placeholder.png" alt="" />
@@ -19,7 +19,7 @@
 					<div>Titolo: {{ serie.name }}</div>
 					<div>Titolo Originale: {{ serie.original_name }}</div>
 					<div>Lingua: <img :src="'https://www.countryflags.io/' + getFlag(serie.original_language) + '/shiny/32.png'" /></div>
-					<div>Voto: {{ serie.vote_average }}</div>
+					<div>Voto: <i v-for="(n, index) in 5" :key="index" class="far fa-star"></i></div>
 					<div>
 						<img v-if="serie.poster_path != null" class="poster" :src="'https://image.tmdb.org/t/p/w92' + serie.poster_path" alt="" />
 						<img v-else class="poster" src="../assets/placeholder.png" alt="" />
@@ -51,13 +51,12 @@ export default {
 			return country.toUpperCase();
 		},
 	},
-	created() {
-		this.getVote();
-	},
+	created() {},
 };
 </script>
 
 <style>
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 .poster {
 	height: 30px;
 	width: 30px;

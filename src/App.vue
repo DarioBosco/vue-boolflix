@@ -1,13 +1,12 @@
 <template>
 	<div id="app">
 		<Header @searchHasChanged="searchHasChanged" />
-		<Main :movies="movies" :series="series" ::APIQuery="APIQuery" />
+		<Main :movies="movies" :series="series" :APIQuery="APIQuery" />
 	</div>
 </template>
 
 <script>
 import axios from 'axios';
-
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
 
