@@ -6,7 +6,7 @@
 					<div>Titolo: {{ movie.title }}</div>
 					<div>Titolo Originale: {{ movie.original_title }}</div>
 					<div>Lingua: <img :src="'https://www.countryflags.io/' + getFlag(movie.original_language) + '/shiny/32.png'" /></div>
-					<div>Voto: {{ movie.vote_average / 2 }}</div>
+					<div>Voto: {{ movie.vote_average }}</div>
 					<div>
 						<img v-if="movie.poster_path != null" class="poster" :src="'https://image.tmdb.org/t/p/w92' + movie.poster_path" alt="" />
 						<img v-else class="poster" src="../assets/placeholder.png" alt="" />
