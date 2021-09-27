@@ -49,7 +49,6 @@ export default {
 				.get('https://api.themoviedb.org/3/search/tv/?api_key=' + this.API_KEY + '&query=' + this.APIQuery)
 				.then((res) => {
 					this.series = res.data.results;
-					console.log(this.series);
 				})
 				.catch((error) => {
 					console.log(error);
