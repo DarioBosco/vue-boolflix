@@ -1,11 +1,11 @@
 <template>
 	<main>
-		<MovieCard :movies="movies" :series="series" :APIQuery="APIQuery" />
+		<Card :movies="movies" :series="series" :APIQuery="APIQuery" />
 	</main>
 </template>
 
 <script>
-import MovieCard from './MovieCard.vue';
+import Card from './Card.vue';
 export default {
 	props: {
 		movies: Array,
@@ -13,7 +13,7 @@ export default {
 		APIQuery: String,
 	},
 	components: {
-		MovieCard,
+		Card,
 	},
 };
 </script>
