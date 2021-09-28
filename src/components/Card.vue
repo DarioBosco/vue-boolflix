@@ -8,12 +8,13 @@
 				<div class="back">
 					<div class="title"><span>Title: </span>{{ movie.title ? movie.title : movie.name }}</div>
 					<div class="original_title"><span>Original Title: </span>{{ movie.original_title ? movie.original_title : movie.original_name }}</div>
-					<div class="lang"><span>Language: </span><img :src="'https://www.countryflags.io/' + getFlag(movie.original_language) + '/shiny/64.png'" /></div>
+					<div class="lang"><span>Language: </span><img :src="'https://www.countryflags.io/' + getFlag(movie.original_language) + '/shiny/32.png'" /></div>
 					<div class="vote">
-						Vote:
+						<span>Vote: </span>
 						<i v-for="n in Math.ceil(movie.vote_average / 2)" :key="n" class="fa fa-star full"></i>
 						<i v-for="n in 5 - Math.ceil(movie.vote_average / 2)" :key="n" class="far fa-star empty"></i>
 					</div>
+					<div class="overview"><span>Overview: </span> {{ movie.overview }}</div>
 				</div>
 			</div>
 		</div>
@@ -105,8 +106,23 @@ export default {
 
 /* Style the back side */
 .flip-card-back {
+	text-align: left;
+	padding: 20px;
 	background-color: black;
 	color: white;
 	transform: rotateY(180deg);
+}
+
+.flip-card-back div {
+	margin-bottom: 10px;
+}
+
+.lang {
+	display: flex;
+	align-items: center;
+}
+
+span {
+	font-weight: bold;
 }
 </style>
