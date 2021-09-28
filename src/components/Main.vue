@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<div v-if="APIQuery != ''">
+		<div v-if="APIQuery != ''" class="container">
 			<Card v-for="movie in movies" :key="movie.id" :movie="movie" />
 		</div>
 		<div v-else>
@@ -22,4 +22,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+main {
+	background-color: grey;
+	height: calc(100vh - 100px);
+	width: 100%;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: red grey;
+}
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+</style>
