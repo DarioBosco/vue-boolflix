@@ -6,9 +6,9 @@
 			</div>
 			<div class="flip-card-back">
 				<div class="back">
-					<div class="title">Titolo: {{ movie.title ? movie.title : movie.name }}</div>
-					<div class="original_title">Titolo Originale: {{ movie.original_title ? movie.original_title : movie.original_name }}</div>
-					<div class="lang">Language: <img :src="'https://www.countryflags.io/' + getFlag(movie.original_language) + '/shiny/64.png'" /></div>
+					<div class="title"><span>Title: </span>{{ movie.title ? movie.title : movie.name }}</div>
+					<div class="original_title"><span>Original Title: </span>{{ movie.original_title ? movie.original_title : movie.original_name }}</div>
+					<div class="lang"><span>Language: </span><img :src="'https://www.countryflags.io/' + getFlag(movie.original_language) + '/shiny/64.png'" /></div>
 					<div class="vote">
 						Vote:
 						<i v-for="n in Math.ceil(movie.vote_average / 2)" :key="n" class="fa fa-star full"></i>
@@ -60,9 +60,10 @@ export default {
 .flip-card {
 	background-color: transparent;
 	width: 342px;
-	height: 200px;
-	perspective: 1000px; /* Remove this if you don't want the 3D effect */
-	margin: 200px 0px;
+	height: 500px;
+	/* perspective: 1000px; */ /* Remove this if you don't want the 3D effect */
+	margin: 25px 0px 25px 0px;
+	overflow: hidden;
 }
 
 /* This container is needed to position the front and back side */
@@ -92,8 +93,14 @@ export default {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-	background-color: #bbb;
-	color: black;
+	background-image: url(../assets/placeholder.png);
+	background-position: center;
+}
+
+.flip-card-front img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
 }
 
 /* Style the back side */
