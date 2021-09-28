@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<Header @searchHasChanged="searchHasChanged" />
-		<Main :movies="movies" :series="series" :APIQuery="APIQuery" />
+		<Main :movies="movies" :APIQuery="APIQuery" />
 	</div>
 </template>
 
@@ -16,7 +16,6 @@ export default {
 		return {
 			API_KEY: '87dd413a911650468c247310a01a7d52',
 			movies: [],
-			series: [],
 			APIQuery: '',
 		};
 	},
@@ -47,7 +46,7 @@ export default {
 			axios
 				.get('https://api.themoviedb.org/3/search/tv/?api_key=' + this.API_KEY + '&query=' + this.APIQuery)
 				.then((res) => {
-					this.series = res.data.results;
+					this.movies = [...this.movies, ...res.data.results];
 				})
 				.catch((error) => {
 					console.log(error);

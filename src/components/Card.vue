@@ -1,43 +1,15 @@
 <template>
 	<section class="movies">
-		<div v-if="APIQuery != ''" class="movie-card">
-			<ul class="movies">
-				<li v-for="(movie, index) in movies" :key="index">
-					<div>Titolo: {{ movie.title }}</div>
-					<div>Titolo Originale: {{ movie.original_title }}</div>
-					<div>Lingua: <img :src="'https://www.countryflags.io/' + getFlag(movie.original_language) + '/shiny/32.png'" /></div>
-					<div>Voto: <i v-for="(n, index) in 5" :key="index" class="far fa-star"></i></div>
-					<div>
-						<img v-if="movie.poster_path != null" class="poster" :src="'https://image.tmdb.org/t/p/w92' + movie.poster_path" alt="" />
-						<img v-else class="poster" src="../assets/placeholder.png" alt="" />
-					</div>
-					<hr />
-				</li>
-			</ul>
-			<ul class="series">
-				<li v-for="(serie, index) in series" :key="index">
-					<div>Titolo: {{ serie.name }}</div>
-					<div>Titolo Originale: {{ serie.original_name }}</div>
-					<div>Lingua: <img :src="'https://www.countryflags.io/' + getFlag(serie.original_language) + '/shiny/32.png'" /></div>
-					<div>Voto: <i v-for="(n, index) in 5" :key="index" class="far fa-star"></i></div>
-					<div>
-						<img v-if="serie.poster_path != null" class="poster" :src="'https://image.tmdb.org/t/p/w92' + serie.poster_path" alt="" />
-						<img v-else class="poster" src="../assets/placeholder.png" alt="" />
-					</div>
-					<hr />
-				</li>
-			</ul>
+		<div>
+			<div class="titolo">Titolo: {{ movie.title ? movie.title : movie.name }}</div>
 		</div>
-		<div v-else>Effettua una ricerca</div>
 	</section>
 </template>
 
 <script>
 export default {
 	props: {
-		movies: Array,
-		series: Array,
-		APIQuery: String,
+		movie: Object,
 	},
 	methods: {
 		getFlag(country) {

@@ -1,6 +1,11 @@
 <template>
 	<main>
-		<Card :movies="movies" :series="series" :APIQuery="APIQuery" />
+		<div v-if="APIQuery != ''">
+			<Card v-for="movie in movies" :key="movie.id" :movie="movie" />
+		</div>
+		<div v-else>
+			Effettua una ricerca
+		</div>
 	</main>
 </template>
 
@@ -9,7 +14,6 @@ import Card from './Card.vue';
 export default {
 	props: {
 		movies: Array,
-		series: Array,
 		APIQuery: String,
 	},
 	components: {
